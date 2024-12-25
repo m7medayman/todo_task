@@ -14,6 +14,7 @@ class FontStyleManager {
   double size22 = 20.0.sp;
   double size16 = 14.0.sp;
   double size14 = 12.0.sp;
+  double size12 = 10.0.sp;
 
   // Font Weights
   static const FontWeight bold = FontWeight.bold;
@@ -68,5 +69,13 @@ class FontStyleManager {
 
   TextStyle size14Bold({Color color = colorAccent}) {
     return custom(fontSize: size14, fontWeight: bold, color: color);
+  }
+
+  TextStyle size12Normal({Color color = colorAccent}) {
+    return custom(fontSize: size12, fontWeight: normal, color: color);
+  }
+
+  TextStyle size12Bold({Color color = colorAccent}) {
+    return custom(fontSize: size12, fontWeight: bold, color: color);
   }
 }

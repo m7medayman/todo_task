@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:task/core/di/di.dart';
+import 'package:task/core/rout_manager/rout_manager.dart';
 import 'package:task/core/theme_manager/theme_manager.dart';
-import 'package:task/features/login/login_view.dart';
-import 'package:task/features/signup/signup_view.dart';
+import 'package:task/features/add_task/add_task_view.dart';
+import 'package:task/features/home/home_page_view.dart';
+import 'package:task/features/login/presentation/login_view.dart';
+import 'package:task/features/signup/presentation/signup_view.dart';
+import 'package:task/features/task_Details/task_datails_view.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  initModule();
   runApp(const MyApp());
 }
 
@@ -20,9 +27,11 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (_, chiled) {
           return MaterialApp(
+            onGenerateRoute: RouteManager.generateRoute,
+            initialRoute: Routes.signUp,
+            debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: getTheme(context),
-            home: const SignupView(),
           );
         });
   }
