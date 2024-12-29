@@ -169,7 +169,9 @@ class _HomePageViewState extends State<HomePageView> {
                 ),
                 actions: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(Routes.profile);
+                    },
                     icon: Icon(
                       Icons.person_outline_rounded,
                       size: 24.r,

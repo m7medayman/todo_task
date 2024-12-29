@@ -10,6 +10,7 @@ import 'package:task/features/home/data/home_repo.dart';
 import 'package:task/features/home/presentation/cubit/home_cubit.dart';
 import 'package:task/features/login/data/login_repo.dart';
 import 'package:task/features/login/presentation/cubit/login_cubit.dart';
+import 'package:task/features/profile/data/profile_repo.dart';
 import 'package:task/features/signup/data/signup_repo.dart';
 import 'package:task/features/signup/presentation/cubit/singup_cubit.dart';
 
@@ -93,4 +94,13 @@ void initAddMoudle() {
   getIt.registerFactory(
       () => AddEditTaskRepo(dioConsumer: getIt<DioConsumer>()));
   isAddTaskModuleInit = true;
+}
+
+bool isProfileModuleInit = false;
+void initProfileModule() {
+  if (isProfileModuleInit) {
+    return;
+  }
+  isProfileModuleInit = true;
+  getIt.registerFactory(() => ProfileRepo(dioConsumer: getIt<DioConsumer>()));
 }

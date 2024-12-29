@@ -50,6 +50,8 @@ dependencies:
   qr_flutter: ^4.1.0
 
   mobile_scanner: ^6.0.2
+  flutter_native_splash: ^2.4.4
+  flutter_launcher_icons: ^0.14.2
   # flutter_barcode_scanner: ^2.0.0
 
 
@@ -87,6 +89,24 @@ flutter:
     - assets/Arrow_Down.png
     - assets/Arrow_Left.png
     - assets/add_image.png
+    - assets/logo.png
+    - assets/ICON.png
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/ICON.png"
+  adaptive_icon_background: "#5F33E1" # Or specify a path to a background image
+  adaptive_icon_foreground: "assets/ICON.png" # Foreground icon
+
+flutter_native_splash:
+  color: "#5F33E1" # Background color of the splash screen
+  image: assets/logo.png # Image for non-Android 12 devices
+  android_12:
+    image: assets/logo.png # Image specifically for Android 12
+    color: "#5F33E1" # Background color of the splash screen
+    icon_background_color: "#5F33E1"
+  android: true
+  ios: true
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

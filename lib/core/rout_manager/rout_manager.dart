@@ -7,6 +7,7 @@ import 'package:task/features/add_task/presentation/add_task_view.dart';
 import 'package:task/core/domain/task_data.dart';
 import 'package:task/features/home/presentation/home_page_view.dart';
 import 'package:task/features/login/presentation/login_view.dart';
+import 'package:task/features/profile/presentation/profile_view.dart';
 import 'package:task/features/signup/presentation/signup_view.dart';
 import 'package:task/features/task_Details/task_datails_view.dart';
 
@@ -42,9 +43,12 @@ class RouteManager {
         return MaterialPageRoute(builder: (_) => const LoginView());
       case Routes.signUp:
         initSignupModule();
-        return MaterialPageRoute(builder: (_) => SignupView());
+        return MaterialPageRoute(builder: (_) => const SignupView());
       case Routes.qrPage:
         return MaterialPageRoute(builder: (_) => QRScannerPage());
+      case Routes.profile:
+        initProfileModule();
+        return MaterialPageRoute(builder: (_) => const ProfileView());
 
       default:
         return MaterialPageRoute(
@@ -64,4 +68,5 @@ class Routes {
   static const String signUp = '/signUp';
   static const String homePage = '/homePage';
   static const String qrPage = '/qrPage';
+  static const String profile = "profile";
 }
