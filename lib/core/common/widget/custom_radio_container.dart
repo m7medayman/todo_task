@@ -24,7 +24,7 @@ class CustomRadioContainer extends StatelessWidget {
               : ColorManager.greyContainerColor),
       child: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12.h),
+          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
           child: Text(text,
               overflow: TextOverflow.ellipsis,
               style: isSelected

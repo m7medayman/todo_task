@@ -51,8 +51,8 @@ class _ProfileViewState extends State<ProfileView> {
                 padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 3.h),
                 child: Image.asset(
                   "assets/Arrow_Left.png",
-                  width: 24.w,
-                  height: 24.h,
+                  width: 12.w,
+                  height: 12.h,
                 ),
               ),
             ),

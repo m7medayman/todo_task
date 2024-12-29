@@ -10,7 +10,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   ProfileRepo repo;
   ProfileCubit(this.repo)
       : super(ProfileState(
-            pageState: InitpageState(),
+            pageState: LoadingHomePageState(),
             userProfileData: UserProfileData(
                 name: "",
                 phone: "",
