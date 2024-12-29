@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:task/core/helpers/level_flags.dart';
 import 'package:task/core/theme_manager/font/font_color.dart';
 import 'package:task/core/theme_manager/font/font_style_manager.dart';
 
@@ -20,7 +21,7 @@ class StatusFlag extends StatelessWidget {
         ),
         Text(
           text,
-          style: FontStyleManager().size14Bold(color: color),
+          style: FontStyleManager.size14Bold(color: color),
         )
       ],
     );
@@ -29,7 +30,7 @@ class StatusFlag extends StatelessWidget {
   String getText() {
     switch (flag) {
       case levelFlag.HEIGH:
-        return "Heigh";
+        return "High";
       case levelFlag.LOW:
         return "lOW";
       case levelFlag.MEDIUM:
@@ -50,5 +51,3 @@ class StatusFlag extends StatelessWidget {
     }
   }
 }
-
-enum levelFlag { MEDIUM, LOW, HEIGH }

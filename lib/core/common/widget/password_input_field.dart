@@ -35,7 +35,7 @@ class _PasswordFieldState extends State<PasswordField> {
                 validator: InputValidator.validatePassword,
                 controller: widget.controller,
                 obscureText: _obscureText,
-                style: FontStyleManager().size14Normal(),
+                style: FontStyleManager.size14Normal(),
                 decoration: InputDecoration(
                     suffixIcon: IconButton(
                       icon: Icon(
@@ -50,7 +50,7 @@ class _PasswordFieldState extends State<PasswordField> {
                     contentPadding:
                         EdgeInsets.symmetric(vertical: 14.h, horizontal: 8.w),
                     hintText: "password...",
-                    hintStyle: FontStyleManager().size14Normal(),
+                    hintStyle: FontStyleManager.size14Normal(),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10))))));
   }

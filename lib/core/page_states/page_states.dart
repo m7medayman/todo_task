@@ -15,3 +15,7 @@ class FailurePageState extends PageState {
 class SuccessPageState extends PageState {}
 
 class UnauthorizedPageState extends PageState {}
+
+class DeleteTaskPageState extends PageState {}
+
+class LoadingHomePageState extends PageState {}

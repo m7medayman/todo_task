@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task/core/theme_manager/font/font_color.dart';
 import 'package:task/core/theme_manager/font/font_style_manager.dart';
 
-class MyDropDownButton extends StatelessWidget {
-  const MyDropDownButton(
+class MyLevelDropDownButton extends StatelessWidget {
+  const MyLevelDropDownButton(
       {super.key, required this.formKey, required this.controller});
   final GlobalKey formKey;
   final TextEditingController controller;
@@ -14,6 +14,7 @@ class MyDropDownButton extends StatelessWidget {
     return Form(
         key: formKey,
         child: DropdownButtonFormField(
+            style: FontStyleManager.size14Normal(),
             icon: Image.asset(
               "assets/Arrow_Down.png",
               width: 24.w,
@@ -27,9 +28,9 @@ class MyDropDownButton extends StatelessWidget {
             },
             decoration: InputDecoration(
                 contentPadding:
-                    EdgeInsets.symmetric(vertical: 14.h, horizontal: 8.w),
+                    EdgeInsets.symmetric(vertical: 15.h, horizontal: 8.w),
                 hintText: "Chose ",
-                hintStyle: FontStyleManager().size14Normal(),
+                hintStyle: FontStyleManager.size14Normal(),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10))),
             items: [
@@ -37,20 +38,20 @@ class MyDropDownButton extends StatelessWidget {
                   value: 'fresh',
                   child: Text(
                     'Fresh',
-                    style: FontStyleManager().size14Normal(),
+                    style: FontStyleManager.size14Normal(),
                   )),
               DropdownMenuItem(
                   value: 'junior',
                   child:
-                      Text('Junior', style: FontStyleManager().size14Normal())),
+                      Text('Junior', style: FontStyleManager.size14Normal())),
               DropdownMenuItem(
                   value: 'midLevel',
-                  child: Text('MidLevel',
-                      style: FontStyleManager().size14Normal())),
+                  child:
+                      Text('MidLevel', style: FontStyleManager.size14Normal())),
               DropdownMenuItem(
                   value: 'senior',
                   child:
-                      Text('Senior', style: FontStyleManager().size14Normal())),
+                      Text('Senior', style: FontStyleManager.size14Normal())),
             ],
             onChanged: (value) {
               controller.text = value.toString();

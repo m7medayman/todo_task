@@ -22,9 +22,9 @@ class Phone_input_field extends StatelessWidget {
       key: formKey,
       child: TextFormField(
         controller: controller,
-        style: FontStyleManager().size14Normal(),
+        style: FontStyleManager.size14Normal(),
         decoration: InputDecoration(
-          hintStyle: FontStyleManager().size14Normal(),
+          hintStyle: FontStyleManager.size14Normal(),
           hintText: "123-456-798",
           contentPadding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 2.w),
           border: OutlineInputBorder(
@@ -55,7 +55,7 @@ class Phone_input_field extends StatelessWidget {
                   initialSelection: "Egypt",
                   flagWidth: 28.w,
                   padding: EdgeInsets.all(8.sp),
-                  textStyle: FontStyleManager().size16Normal(),
+                  textStyle: FontStyleManager.size16Normal(),
                   flagDecoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(9),
                   ),

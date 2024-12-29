@@ -75,8 +75,8 @@ class DioConsumer extends ApiConsumer {
           queryParameters: queryParameters);
 
       // Extract and parse the response body
-
-      return jsonDecode(response.data) as Map<String, dynamic>;
+      print(response.toString());
+      return jsonDecode(response.toString()) as Map<String, dynamic>;
     } on DioException catch (error) {
       throw _handleDioError(error);
     }

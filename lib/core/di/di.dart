@@ -2,7 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:task/core/api/app_interceptors.dart';
 import 'package:task/core/api/dio_consumer.dart';
+import 'package:task/core/api/end_points.dart';
 import 'package:task/core/secure_storage/secure_stroage.dart';
+import 'package:task/features/add_task/data/add_edit_task_repo.dart';
+import 'package:task/features/delete_task/delete_task_api.dart';
+import 'package:task/features/home/data/home_repo.dart';
+import 'package:task/features/home/presentation/cubit/home_cubit.dart';
 import 'package:task/features/login/data/login_repo.dart';
 import 'package:task/features/login/presentation/cubit/login_cubit.dart';
 import 'package:task/features/signup/data/signup_repo.dart';
@@ -15,8 +20,13 @@ void initModule() {
   if (isInitialized) {
     return;
   }
-  getIt.registerFactory(() => SecureStorage());
-  getIt.registerFactory(() => Dio());
+  getIt.registerSingleton(SecureStorage());
+  getIt.registerFactory(() => Dio(
+        BaseOptions(
+            baseUrl: EndPoints.baseUrl,
+            responseType: ResponseType.plain,
+            followRedirects: false),
+      ));
   getIt.registerFactory(
       () => MyAppInterceptors(getIt<SecureStorage>(), client: getIt<Dio>()));
   getIt.registerFactory(() => LogInterceptor());
@@ -40,6 +50,7 @@ void initLoginModule() {
       .registerFactory(() => LoginRepo(storage: getIt(), dioConsumer: getIt()));
   getIt.registerFactory(() => LoginCubit(getIt<LoginRepo>()));
 }
+
 bool isSignupInit = false;
 
 void initSignupModule() {
@@ -47,7 +58,39 @@ void initSignupModule() {
     return;
   }
   isSignupInit = true;
-  getIt
-      .registerFactory(() => SignupRepo(storage: getIt(), dioConsumer: getIt()));
+  getIt.registerFactory(
+      () => SignupRepo(storage: getIt(), dioConsumer: getIt()));
   getIt.registerFactory(() => SingupCubit(getIt<SignupRepo>()));
+}
+
+bool isDelteInit = false;
+void initDeleteRepo() {
+  if (isDelteInit) {
+    return;
+  }
+  getIt
+      .registerFactory(() => DeleteTaskRepo(dioConsumer: getIt<DioConsumer>()));
+}
+
+bool isHomeModuleInit = false;
+void initHomeModule() {
+  if (isHomeModuleInit) {
+    return;
+  }
+  initDeleteRepo();
+  getIt.registerFactory(() => HomeRepo(dioConsumer: getIt<DioConsumer>()));
+  getIt.registerFactory(() => HomeCubit(
+      getIt<HomeRepo>(), getIt<DeleteTaskRepo>(), getIt<SecureStorage>()));
+  isHomeModuleInit = true;
+}
+
+bool isAddTaskModuleInit = false;
+
+void initAddMoudle() {
+  if (isAddTaskModuleInit) {
+    return;
+  }
+  getIt.registerFactory(
+      () => AddEditTaskRepo(dioConsumer: getIt<DioConsumer>()));
+  isAddTaskModuleInit = true;
 }

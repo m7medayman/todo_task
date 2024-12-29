@@ -4,39 +4,45 @@ import 'package:task/core/theme_manager/font/font_color.dart';
 import 'package:task/core/theme_manager/font/font_style_manager.dart';
 
 class StatusContainer extends StatelessWidget {
-  const StatusContainer({super.key, required this.status});
+  const StatusContainer({super.key, required this.status, required this.style});
   final ItemStatus status;
+  final TextStyle style;
   @override
   Widget build(BuildContext context) {
     switch (status) {
       case ItemStatus.WAITING:
-        return const _ManiStatusContainer(
-            text: "Waiting",
-            containerColor: ItemStatusColor.waiting,
-            textColor: FontColors.orange);
+        return _ManiStatusContainer(
+          style: style,
+          text: "Waiting",
+          containerColor: ItemStatusColor.waiting,
+        );
       case ItemStatus.INPROGRESS:
-        return const _ManiStatusContainer(
-            text: "Inprogress",
-            containerColor: ItemStatusColor.inprogress,
-            textColor: FontColors.purple);
+        return _ManiStatusContainer(
+          style: style,
+          text: "Inprogress",
+          containerColor: ItemStatusColor.inprogress,
+        );
       case ItemStatus.FINISHED:
-        return const _ManiStatusContainer(
-            text: "Finished",
-            containerColor: ItemStatusColor.finished,
-            textColor: FontColors.blue);
+        return _ManiStatusContainer(
+          style: style,
+          text: "Finished",
+          containerColor: ItemStatusColor.finished,
+        );
     }
   }
 }
 
 class _ManiStatusContainer extends StatelessWidget {
-  const _ManiStatusContainer(
-      {super.key,
-      required this.text,
-      required this.containerColor,
-      required this.textColor});
+  const _ManiStatusContainer({
+    super.key,
+    required this.text,
+    required this.containerColor,
+    required this.style,
+  });
   final String text;
   final Color containerColor;
-  final Color textColor;
+
+  final TextStyle style;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +55,7 @@ class _ManiStatusContainer extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 3.h, vertical: 2.w),
         child: Text(
           text,
-          style: FontStyleManager().size12Bold(color: textColor),
+          style: style,
         ),
       ),
     );
@@ -60,6 +66,19 @@ enum ItemStatus {
   WAITING,
   INPROGRESS,
   FINISHED,
+}
+
+extension ToString on ItemStatus {
+  String toS() {
+    switch (this) {
+      case ItemStatus.FINISHED:
+        return "finished";
+      case ItemStatus.INPROGRESS:
+        return "inprogress";
+      case ItemStatus.WAITING:
+        return "waiting";
+    }
+  }
 }
 
 class ItemStatusColor {

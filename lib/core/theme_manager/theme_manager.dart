@@ -14,7 +14,7 @@ ThemeData getTheme(context) {
           backgroundColor: Colors.white,
           elevation: 0,
           centerTitle: true,
-          titleTextStyle: FontStyleManager().size24Bold(color: FontColors.black)),
+          titleTextStyle: FontStyleManager.size24Bold(color: FontColors.black)),
       scaffoldBackgroundColor: ColorManager.backgroundColor,
       cardColor: ColorManager.cardColor,
       iconTheme: IconThemeData(color: ColorManager.iconColor),

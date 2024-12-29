@@ -15,10 +15,10 @@ class SignupRepo {
   Future<Either<Failure, dynamic>> signup(
       {required String phone,
       required String password,
-     required String name,
-   required   int experinceYears,
-     required String level,
-     required String address}) async {
+      required String name,
+      required int experinceYears,
+      required String level,
+      required String address}) async {
     try {
       final response = await _dioConsumer.post(
         EndPoints.register,
@@ -34,6 +34,7 @@ class SignupRepo {
 
       storage.setAccessToken(response["access_token"]);
       storage.setRefreshToken(response["refresh_token"]);
+      storage.setUserId(response["_id"]);
 
       return Right(response);
     } catch (error) {

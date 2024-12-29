@@ -26,12 +26,13 @@ class LoginRepo {
 
       storage.setAccessToken(response["access_token"]);
       storage.setRefreshToken(response["refresh_token"]);
+      storage.setUserId(response["_id"]);
 
       return Right(response);
     } catch (error) {
       if (error is Failure) {
         if (error is UnAuthorizedFailure) {
-          return Left(Failure(id: 111,message: "Wrong phone or password"));
+          return Left(Failure(id: 111, message: "Wrong phone or password"));
         }
         return Left(error);
       }

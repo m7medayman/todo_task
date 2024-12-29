@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -65,9 +66,8 @@ class MyAppInterceptors extends Interceptor {
   }
 
   Future<bool> _refreshToken() async {
-    final String authToken = await storage.getAccessToken() ?? "";
     final String refreshToken = await storage.getRefreshToken() ?? "";
-    if (authToken.isEmpty || refreshToken.isEmpty) {
+    if (refreshToken.isEmpty) {
       return false;
     }
     final response = await client.get(
@@ -75,18 +75,13 @@ class MyAppInterceptors extends Interceptor {
       queryParameters: {
         "token": refreshToken, // Pass the token as a query parameter
       },
-      options: Options(
-        headers: {
-          "Authorization":
-              "Bearer $authToken", // Include Bearer token in the header
-        },
-      ),
+      options: Options(),
     );
     final jsonResponse = response.data;
-
+    final res = jsonDecode(jsonResponse);
     if (response.statusCode == 200) {
-      storage.setAccessToken(jsonResponse["access_token"]);
-      storage.setRefreshToken(jsonResponse["refresh_token"]);
+      storage.setAccessToken("${res["access_token"]}");
+
 
       return true;
     } else {

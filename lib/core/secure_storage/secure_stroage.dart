@@ -1,11 +1,10 @@
 import 'dart:developer';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SecureStorage {
   // final _storage = const FlutterSecureStorage();
   final Map<String, String> _storage = {};
   final String _accessTokenKey = "accessToken";
-
+final String _userId = "userId";
   Future<void> setAccessToken(String accessToken) async {
     try {
       // await _storage.write(key: _accessTokenKey, value: accessToken);
@@ -15,11 +14,28 @@ class SecureStorage {
       log("Error saving token: $e");
     }
   }
-
+  Future<void> setUserId(String userId) async {
+    try {
+      // await _storage.write(key: _accessTokenKey, value: accessToken);
+      _storage[_userId] = userId;
+      log("user id saved securely: $userId");
+    } catch (e) {
+      log("Error saving token: $e");
+    }
+  }
   Future<String?> getAccessToken() async {
     try {
       // return await _storage.read(key: _accessTokenKey);
       return _storage[_accessTokenKey];
+    } catch (e) {
+      log("Error retrieving token: $e");
+      return null;
+    }
+  }
+  Future<String?> getUserId() async {
+    try {
+      // return await _storage.read(key: _accessTokenKey);
+      return _storage[_userId];
     } catch (e) {
       log("Error retrieving token: $e");
       return null;
