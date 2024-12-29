@@ -245,7 +245,7 @@ class _HomePageViewState extends State<HomePageView> {
                                       },
                                       child: CustomRadioContainer(
                                           isSelected: state.waiting,
-                                          text: "Wating"),
+                                          text: "Waiing"),
                                     ),
                                     InkWell(
                                       onTap: () {
